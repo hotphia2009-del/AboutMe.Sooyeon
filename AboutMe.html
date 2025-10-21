@@ -1,0 +1,257 @@
+<!doctype html>
+<html class="mindmap-html">
+<html lang="eng">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head> 
+
+<body>
+
+    <section class="header">
+        <a href="#"><img src="download (1).jpeg" class="logo"></a>
+        <h2>About Me</h2>
+
+        <div>
+            <ul class="navbar">
+                 <li><a  href="index.html">Home</a></li>
+                 <li><a class="active" href="AboutMe.html">Mind Map</a></li>
+                 <li><a href="characteristics.html">Characteristics</a></li>
+                 <li><a href="journey.html">Stories</a></li>
+            </ul>
+        </div>
+
+    </section>
+
+
+</body>
+
+<style>
+
+
+  h2{
+    margin-left: 300px;
+  }
+
+  .navbar{
+    margin-left: 160px;
+    margin-right: 0;
+  }
+
+  .header h2 {
+    position: relative; /* 현재 위치 기준으로 이동 가능 */
+    left: 80px;        /* 원하는 만큼 오른쪽으로 이동 */
+    top: 0;             /* 필요하면 위/아래 조정 */
+    margin: 0;          /* 기존 마진 제거 */
+  }
+
+
+  :root{
+    --bg1: linear-gradient(135deg,#5077b1,#0649b1);
+    --accent-light: #ffd166;
+    --accent-dark: #64748b;
+    --card-bg: rgba(255,255,255,0.95);
+    --text: #111827;
+  }
+
+  *{box-sizing:border-box;font-family:'Poppins',sans-serif}
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--bg1);
+    color:var(--text);
+  }
+
+  .canvas{
+    width:min(1000px,94vw);
+    height:min(700px,82vh);
+    position:relative;
+    border-radius:16px;
+    background:#e3e6f3;
+    
+    backdrop-filter: blur(4px);
+    padding:30px;
+    overflow:hidden;
+  }
+
+  /* 중앙 노드 */
+  .center{
+    position:absolute;
+    left:50%; top:50%;
+    transform: translate(-50%,-50%);
+    width:160px; height:160px;
+    border-radius:999px;
+    background: rgba(254,230,0,0.8);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    cursor:pointer;
+    z-index:5;
+  }
+  .center h2{margin:0;font-size:18px;text-align:center;font-weight:700}
+
+  /* 원형으로 노드 배치: container을 기준으로 각 노드에 transform으로 위치 지정 */
+  .node{
+    position:absolute;
+    width:88px; height:88px;
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition: transform .22s ease, box-shadow .22s;
+    transform-origin:center;
+  }
+  .node .emoji{font-size:34px; filter:drop-shadow(0 6px 10px #e3e9f1);}
+  .node .label{display:block;margin-top:6px;font-size:12px;text-align:center}
+
+  /* hover enlarge + glow */
+  .node:hover{
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 18px rgba(255,255,255,0.06) inset;
+  }
+
+  /* 강점/약점 색상 구분 (클래스로 지정) */
+  .node{
+    background: linear-gradient(#fee600, #e8e2af);
+    background: rgba(254,230,0,0.7);
+  }
+
+  /* 팝업(카드) */
+  .card{
+    position:absolute;
+    left:50%; top:50%;
+    transform: translate(-50%,-50%) scale(.98);
+    width:min(420px,86%);
+    max-height:70%;
+    overflow:auto;
+    background:var(--card-bg);
+    border-radius:12px;
+    background: rgba(250, 247, 247, 0.5);
+    backdrop-filter: blur(14px);
+    padding: 15px;
+    box-shadow: 0 20px 40px rgb(179, 184, 189);
+    display:none;
+    z-index:20;
+  }
+  .card.show{ display:block; animation: pop .18s ease both;}
+  @keyframes pop { from{ transform: translate(-50%,-50%) scale(.96); opacity:0 } to{ transform: translate(-50%,-50%) scale(1); opacity:1 } }
+  .card .title{font-weight:700;margin-bottom:8px}
+  .card .text{line-height:1.6; font-size:14px; color:#111827}
+  .card .close{position:absolute; right:12px; top:10px; cursor:pointer; font-weight:700; opacity:.6}
+
+  /* 반응형: 모바일에서 노드 크기 줄이기 */
+  @media (max-width:640px){
+    .node{ width:72px; height:72px }
+    .center{ width:124px; height:124px }
+  }
+</style>
+</head>
+<body>
+  <div class="canvas" id="canvas">
+    <div class="center" id="center">
+      <h2>About Me</h2>
+    </div>
+
+    <!-- 노드들: data-key 속성으로 JS info 객체와 연결 -->
+    <div class="node strength" data-key="guitar" id="node-guitar" style="left:50%; top:10%; transform: translate(-50%,-50%)">
+      <div><div class="emoji">🎸</div></div>
+    </div>
+
+    <div class="node strength" data-key="art" id="node-art" style="left:85%; top:35%; transform: translate(-50%,-50%)">
+      <div><div class="emoji">🖌️</div></div>
+    </div>
+
+    <div class="node strength" data-key="mbti" id="node-mbti" style="left:78%; top:75%; transform: translate(-50%,-50%)">
+      <div><div class="emoji">🌏</div></div>
+    </div>
+
+    <div class="node strength" data-key="tenacity" id="node-tenacity" style="left:50%; top:88%; transform: translate(-50%,-50%)">
+      <div><div class="emoji">1️⃣5️⃣</div></div>
+    </div>
+
+    <div class="node weakness" data-key="weakness" id="node-weak" style="left:22%; top:75%; transform: translate(-50%,-50%)">
+      <div><div class="emoji">😀</div></div>
+    </div>
+
+    <div class="node strength" data-key="goal" id="node-goal" style="left:12%; top:35%; transform: translate(-50%,-50%)">
+      <div><div class="emoji">🚀</div></div>
+    </div>
+
+    <!-- 카드 팝업 -->
+    <div class="card" id="card">
+      <div class="close" id="card-close">✕</div>
+      <div class="title" id="card-title">Title</div>
+      <div class="text" id="card-text">Text</div>
+    </div>
+  </div>
+
+<script>
+/* 네가 준 info 객체 (조금 다듬음) */
+const info = {
+  mbti: {
+    title: "Korean",
+    text: "I came from Seoul, South Korea. I take pride in my culture, language, and heritage."
+  },
+  art: {
+    title: "Art",
+    text: "I like drawing, which requires both consistency and creativity. Through art I learned that patience and regular practice improve my skills."
+  },
+  guitar: {
+    title: "Guitar",
+    text: "I like playing bass guitar. It taught me the value of persistence—practicing until I reach a goal builds confidence and skill."
+  },
+  tenacity: {
+    title: "Age",
+    text: "I am 15 years old, I was born in December, 2009."
+  },
+  weakness: {
+    title: "Name",
+    text: "My name is Sooyeon Kim."
+  },
+  goal: {
+    title: "Dream",
+    text: "I want to be a web developer in the future."
+  }
+};
+
+/* 노드 클릭 → 카드 띄우는 로직 */
+const nodes = document.querySelectorAll('.node');
+const card = document.getElementById('card');
+const titleEl = document.getElementById('card-title');
+const textEl = document.getElementById('card-text');
+const closeBtn = document.getElementById('card-close');
+
+nodes.forEach(node=>{
+  node.addEventListener('click', e=>{
+    const k = node.dataset.key;
+    const d = info[k];
+    if(!d) return;
+    titleEl.textContent = d.title;
+    textEl.textContent = d.text;
+    card.classList.add('show');
+
+    // 카드 위치를 클릭한 노드 근처로 이동시키고 싶으면 계산 추가 가능
+    // 현재는 중앙에 고정해서 보여주도록 했음.
+  });
+});
+
+closeBtn.addEventListener('click', ()=> card.classList.remove('show'));
+
+// 캔버스 바깥 클릭하면 카드 닫기
+document.addEventListener('click', (e)=>{
+  if(card.classList.contains('show')){
+    if(!card.contains(e.target) && !e.target.closest('.node')) {
+      card.classList.remove('show');
+    }
+  }
+});
+</script>
+</body>
+</html>
+</html>

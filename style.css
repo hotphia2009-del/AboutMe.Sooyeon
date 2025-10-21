@@ -1,0 +1,170 @@
+/* 헤더 고정 + 모든 페이지 동일하게 */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px; /* 기존 구조 유지 */
+    padding: 0 40px;
+    background-color: #e3e6f3;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 유지 */
+    justify-content: space-between; /* 기존 구조 그대로 */
+}
+
+/* body padding: 헤더 높이만큼 */
+body {
+    margin: 0;
+    padding-top: 120px; /* 헤더 높이와 동일 */
+}
+
+/* 로고 고정 크기 */
+.logo {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0; /* 줄어들지 않음 */
+}
+
+/* 헤더 타이틀 고정 */
+.header h2 {
+    font-size: 20px; /* 페이지마다 동일 */
+    margin: 0;
+}
+
+/* 메뉴 고정 */
+.navbar {
+    display: flex;
+    align-items: center;
+    margin-right: 80px; /* 기존 그대로 */
+}
+
+/* li 아이템 스타일 */
+.navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* 링크 스타일 */
+.navbar li a {
+    font-family: 'Lucida Sans', sans-serif;
+    text-decoration: none;
+    font-size: 16px; /* 고정 */
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+.navbar li a:hover,
+.navbar li a:active {
+    color: #088178;
+}
+
+.navbar li a.active::after,
+.navbar li a:hover::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background-color: #088178;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+.hero{
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+display: flex;
+align-items: flex-start;
+justify-content: center;
+flex-direction: column;
+padding: 170px 140px 0 30px;
+}
+
+h1{
+    font-size: 45px;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+}
+
+h4{
+margin: 0 0 10px 0;
+color: #0649b1;
+}
+
+
+button{
+   
+    background-color: rgb(254,230,0);
+    color: #0649b1;
+    border: 0;
+    padding: 14px 50px 14px 45px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 400;
+    border: 2px solid rgba(53, 53, 55, 0.5);
+    background-repeat: no-repeat;
+    transition: 0.3s ease;
+}
+
+button:hover,button:active{
+    color: #088178;
+}
+
+body{
+    background-color: #f5f6ff;
+    margin: 0;   /* 브라우저 기본 여백 제거 */
+    padding: 0;
+}
+
+
+.ba{
+ object-fit: contain;
+ width: 1440px;
+ overflow: hidden;
+ padding: 36px 0 0 0;
+ 
+}
+
+
+.years ul{
+
+ list-style: none;
+ margin-top: 130px;
+ display: flex;
+ flex-direction: column;
+
+}
+
+.years li{
+ padding: 20px 25px;
+ background-color: rgb(254,230,0); /* padding 안 건드리고 테두리만 */
+ display: inline-block;
+ margin-bottom: 50px;
+ border-radius: 8px;
+ align-self: flex-start; 
+ font-size: 20px;
+ font-weight: 400;
+ font-family:sans-serif
+}
+
+style{
+    padding-top: 80px;
+}
+
+.mindmap-html{
+    padding-top: 75px;
+}
+
+body{
+  overflow: hidden; /* 스크롤 제거 */
+  height: 100%;     /* 전체 높이 확보 */
+  margin: 0;        /* 브라우저 기본 여백 제거 */
+  padding: 0;
+}

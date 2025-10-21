@@ -1,0 +1,160 @@
+<!doctype html>
+<html class="mindmap-html">
+<html lang="eng">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head> 
+
+<body>
+
+    <section class="header">
+        <a href="#"><img src="download (1).jpeg" class="logo"></a>
+        <h2>About Me</h2>
+
+        <div>
+            <ul class="navbar">
+                 <li><a  href="index.html">Home</a></li>
+                 <li><a href="AboutMe.html">Mind Map</a></li>
+                 <li><a class="active" href="characteristics.html">Characteristics</a></li>
+                 <li><a href="journey.html">Stories</a></li>
+            </ul>
+        </div>
+
+    </section>
+
+     
+
+  
+</body>
+
+<style>
+    
+    body{
+        background-color: rgba(6, 73, 177,0.7);
+       
+    }
+
+    .star{
+        display: inline-block;   /* 블록이 아닌 inline-block으로 처리 */
+       background-color: rgba(6, 73, 177,0.8);
+       padding: 10px 50px;
+       border-radius: 8px;
+    }
+
+    .characteristics {
+  position: relative;
+  width: 100%;
+  height: 500px; /* 섹션 높이 */
+  overflow: hidden; /* 화면 밖으로 나가는 요소 숨김 */
+  background: linear-gradient(135deg, #fee600, #0649b1);
+ }
+
+
+    
+</style>
+
+<section id="characteristics">
+  <h2 class="star">🌟 My Characteristics</h2>
+  <div class="bubble-container">
+    <span class="bubble">Curious</span>
+    <span class="bubble">Creative</span>
+    <span class="bubble">ENTP</span>
+    <span class="bubble">Independent</span>
+    <span class="bubble">Impatience</span>
+    <span class="bubble">Optimistic</span>
+    <span class="bubble">Adventerous</span>
+    <span class="bubble">tenacious</span>
+    <span class="bubble">Logical</span>
+  </div>
+</section>
+
+<script>
+  const bubbles = document.querySelectorAll('.bubble');
+  bubbles.forEach(bubble => {
+    const x = Math.random() * 90; // 10~90vw
+    const y = Math.random() * 50 + 5; // 10~80vh
+    bubble.style.left = `${x}vw`;
+    bubble.style.top = `${y}vh`;
+
+    const duration = Math.random() * 6 + 6; // 6~12초
+    const delay = Math.random() * 4; // 0~4초
+    bubble.style.animationDuration = `${duration}s`;
+    bubble.style.animationDelay = `${delay}s`;
+  });
+
+
+  
+</script>
+
+<style>
+#characteristics {
+  position: relative;
+  height: 80vh;
+  text-align: center;
+  overflow: hidden;
+  margin-top: 120px;
+}
+
+#characteristics h2 {
+  font-size: 48px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.bubble-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bubble {
+  position: absolute;
+  padding: 15px 30px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  animation: float-random linear infinite alternate;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* hover 시 강조 효과 */
+.bubble:hover {
+  transform: scale(1.25);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+}
+
+/* 랜덤 움직임 */
+@keyframes float-random {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20px, -25px);
+  }
+  50% {
+    transform: translate(-15px, 20px);
+  }
+  75% {
+    transform: translate(25px, 15px);
+  }
+  100% {
+    transform: translate(-20px, -20px);
+  }
+}
+</style>
+
+
